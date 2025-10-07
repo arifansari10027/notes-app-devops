@@ -25,8 +25,8 @@ func main() {
 	http.HandleFunc("/delete", handleDelete)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
-	log.Println("Server running on http://localhost:8080")
-	http.ListenAndServe(":8080", nil)
+	log.Println("Server running on http://localhost:8888")
+	http.ListenAndServe(":8888", nil)
 }
 
 func handleIndex(w http.ResponseWriter, r *http.Request) {
