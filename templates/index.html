@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Go Notes</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <header class="navbar">
+        <h1>📝 Go Notes</h1>
+    </header>
+
+    <main class="container">
+        <section class="add-section">
+            <form action="/add" method="POST" class="add-form">
+                <input type="text" name="content" placeholder="Write something..." required>
+                <button type="submit">Add</button>
+            </form>
+        </section>
+
+        <section class="notes-section">
+            {{if .}}
+                <div class="notes-grid">
+                    {{range .}}
+                    <div class="note-card">
+                        <p class="note-text">{{.Content}}</p>
+                        <form action="/delete" method="POST">
+                            <input type="hidden" name="id" value="{{.ID}}">
+                            <button type="submit" class="delete-btn" title="Delete Note">✕</button>
+                        </form>
+                    </div>
+                    {{end}}
+                </div>
+            {{else}}
+                <div class="empty-state">
+                    <h2>No Notes Yet</h2>
+                    <p>Add your first note above!</p>
+                </div>
+            {{end}}
+        </section>
+    </main>
+
+    <footer>
+        <p>Built with ❤️ in Go</p>
+    </footer>
+</body>
+</html>
