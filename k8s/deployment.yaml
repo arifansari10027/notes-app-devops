@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notesapp
+  labels:
+    app: notesapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: notesapp
+  template:
+    metadata:
+      labels:
+        app: notesapp
+    spec:
+      containers:
+      - name: notesapp
+        image: arifansari10027/notesapp:latest
+        ports:
+        - containerPort: 8888
